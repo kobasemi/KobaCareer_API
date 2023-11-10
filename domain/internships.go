@@ -22,7 +22,7 @@ type Internships struct {
 	UpdatedAt   time.Time `json:"updated_at"`
 }
 
-func NewInternship(dto request.CreateInternship) (*Internships, error) {
+func NewInternship(dto *request.CreateInternship) (*Internships, error) {
 	var internships = Internships{
 		Company:     dto.Company,
 		Title:       dto.Title,

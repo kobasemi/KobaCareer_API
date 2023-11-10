@@ -7,7 +7,7 @@ import (
 )
 
 type InternshipInputPort interface {
-	Create(ctx context.Context, req request.CreateInternship) error
+	Create(ctx context.Context, req *request.CreateInternship) error
 	GetByID(ctx context.Context, id uint) error
 	GetAll(ctx context.Context) error
 	Update(ctx context.Context, req request.UpdateInternship) error
@@ -46,12 +46,22 @@ func NewInternshipInputFactory(ir InternshipRepository) InternshipInputFactory {
 	}
 }
 
-func (i internship) Create(ctx context.Context, req request.CreateInternship) error {
+func (i internship) Create(ctx context.Context, req *request.CreateInternship) error {
 	newInternship, err := domain.NewInternship(req)
 	if err != nil {
 		return err
 	}
 
+	err = ctx.InternshipValidate(*newInternship)
+	if err != nil {
+		return err
+	}
+
+	id, err := i.internshipRepo.Create(ctx, newInternship)
+	if err != nil {
+		return err
+	}
+	return i.outputPort.Create(id)
 }
 
 func (i internship) GetByID(ctx context.Context, id uint) error {
