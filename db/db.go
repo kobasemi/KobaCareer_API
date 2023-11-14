@@ -2,12 +2,11 @@ package db
 
 import (
 	"fmt"
+	"github.com/joho/godotenv"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"log"
 	"os"
-
-	"github.com/joho/godotenv"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
 
 func NewDB() *gorm.DB {
@@ -17,14 +16,16 @@ func NewDB() *gorm.DB {
 			log.Fatalln(err)
 		}
 	}
-	url := fmt.Sprintf("postgres://%s:%s@%s:%s/%s", os.Getenv("POSTGRES_USER"),
-		os.Getenv("POSTGRES_PW"), os.Getenv("POSTGRES_HOST"),
-		os.Getenv("POSTGRES_PORT"), os.Getenv("POSTGRES_DB"))
-	db, err := gorm.Open(postgres.Open(url), &gorm.Config{})
+	// MySQL用の接続文字列の形式に変更
+	url := fmt.Sprintf(
+		"root:password@tcp(db:3306)/koba-career?charset=utf8mb4&parseTime=True&loc=Local",
+	)
+
+	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println("Connceted")
+	fmt.Println("Connected to MySQL")
 	return db
 }
 
