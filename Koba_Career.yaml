@@ -1,0 +1,140 @@
+swagger: "2.0"
+info:
+  title: "Internship API"
+  description: "API for managing internships."
+  version: "1.0.0"
+host: "localhost:8080"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /internships:
+    get:
+      summary: "List all internships"
+      description: "Retrieve a list of all internships."
+      responses:
+        200:
+          description: "A list of internships."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/InternshipsResponse"
+    post:
+      summary: "Create a new internship"
+      description: "Create a new internship."
+      parameters:
+        - in: "body"
+          name: "internship"
+          description: "Internship to add"
+          required: true
+          schema:
+            $ref: "#/definitions/Internships"
+      responses:
+        201:
+          description: "Internship created."
+          schema:
+            $ref: "#/definitions/InternshipsResponse"
+  /internships/{internshipId}:
+    get:
+      summary: "Get a specific internship"
+      description: "Retrieve a specific internship by its ID."
+      parameters:
+        - in: "path"
+          name: "internshipId"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        200:
+          description: "Details of a specific internship."
+          schema:
+            $ref: "#/definitions/InternshipsResponse"
+    put:
+      summary: "Update an existing internship"
+      description: "Update an existing internship by its ID."
+      parameters:
+        - in: "path"
+          name: "internshipId"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "internship"
+          required: true
+          schema:
+            $ref: "#/definitions/Internships"
+      responses:
+        200:
+          description: "Internship updated."
+          schema:
+            $ref: "#/definitions/InternshipsResponse"
+    delete:
+      summary: "Delete an internship"
+      description: "Delete an internship by its ID."
+      parameters:
+        - in: "path"
+          name: "internshipId"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        204:
+          description: "Internship deleted."
+definitions:
+  Internships:
+    type: "object"
+    required:
+      - "company"
+      - "title"
+      - "salary"
+      - "period"
+      - "selection"
+      - "deadline"
+      - "contributor"
+      - "detail"
+      - "future_job"
+      - "flow"
+      - "method"
+    properties:
+      company:
+        type: "string"
+      title:
+        type: "string"
+      salary:
+        type: "integer"
+      period:
+        type: "string"
+      selection:
+        type: "string"
+      deadline:
+        type: "string"
+      contributor:
+        type: "string"
+      detail:
+        type: "string"
+      future_job:
+        type: "string"
+      flow:
+        type: "string"
+      method:
+        type: "string"
+  InternshipsResponse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      company:
+        type: "string"
+      title:
+        type: "string"
+      salary:
+        type: "integer"
+      period:
+        type: "string"
+      selection:
+        type: "string"
+      deadline:
+        type: "string"
+      contributor:
+        type: "string"
+

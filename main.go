@@ -3,6 +3,7 @@ package main
 import (
 	"KobaCareer_API/controller"
 	"KobaCareer_API/db"
+	_ "KobaCareer_API/migrate"
 	"KobaCareer_API/repository"
 	"KobaCareer_API/router"
 	"KobaCareer_API/usecase"

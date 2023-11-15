@@ -1,4 +1,4 @@
-package main
+package migrate
 
 import (
 	"KobaCareer_API/db"
@@ -7,7 +7,8 @@ import (
 	"log"
 )
 
-func main() {
+func init() {
+	fmt.Println("Starting migration...")
 	dbConn := db.NewDB()
 	defer fmt.Println("Successfully Migrated")
 	defer db.CloseDB(dbConn)
