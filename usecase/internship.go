@@ -95,6 +95,7 @@ func (iu *internshipUsecase) CreateInternship(internship domain.Internships) (do
 		FutureJob:   internship.FutureJob,
 		Flow:        internship.Flow,
 		Method:      internship.Method,
+		URL:         internship.URL,
 		CreatedAt:   internship.CreatedAt,
 		UpdatedAt:   internship.UpdatedAt,
 	}
@@ -121,6 +122,7 @@ func (iu *internshipUsecase) UpdateInternship(internship domain.Internships, int
 		FutureJob:   internship.FutureJob,
 		Flow:        internship.Flow,
 		Method:      internship.Method,
+		URL:         internship.URL,
 		CreatedAt:   internship.CreatedAt,
 		UpdatedAt:   internship.UpdatedAt,
 	}

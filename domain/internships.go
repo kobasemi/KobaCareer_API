@@ -17,6 +17,7 @@ type Internships struct {
 	FutureJob   string    `json:"future_job"`
 	Flow        string    `json:"flow"`
 	Method      string    `json:"method"`
+	URL         string    `json:"url"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }
@@ -34,6 +35,7 @@ type InternshipsResponse struct {
 	FutureJob   string    `json:"future_job"`
 	Flow        string    `json:"flow"`
 	Method      string    `json:"method"`
+	URL         string    `json:"url"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }

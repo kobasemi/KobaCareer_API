@@ -55,6 +55,7 @@ func (i internshipRepository) UpdateInternship(internship *domain.Internships, i
 		FutureJob:   internship.FutureJob,
 		Flow:        internship.Flow,
 		Method:      internship.Method,
+		URL:         internship.URL,
 	})
 	if result.Error != nil {
 		return result.Error

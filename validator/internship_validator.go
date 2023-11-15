@@ -73,5 +73,10 @@ func (iv *internshipValidator) InternshipValidate(internship domain.Internships)
 			validation.Required.Error("method is required"),
 			validation.RuneLength(1, 100).Error("limited max 100 char"),
 		),
+
+		validation.Field(
+			&internship.URL,
+			validation.Required.Error("url is required"),
+		),
 	)
 }

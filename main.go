@@ -19,5 +19,6 @@ func main() {
 	internController := controller.NewInternshipController(internUsecase)
 	e := router.NewRouter(internController)
 	e.Use(middleware.CORS())
+	//e.Use(cors.Cors(nil))
 	e.Logger.Fatal(e.Start(":8080"))
 }
