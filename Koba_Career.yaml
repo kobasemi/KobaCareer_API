@@ -137,4 +137,17 @@ definitions:
         type: "string"
       contributor:
         type: "string"
-
+      detail:
+        type: "string"
+      future_job:
+        type: "string"
+      flow:
+        type: "string"
+      method:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
