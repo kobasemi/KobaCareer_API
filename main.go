@@ -8,6 +8,7 @@ import (
 	"KobaCareer_API/router"
 	"KobaCareer_API/usecase"
 	"KobaCareer_API/validator"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
@@ -17,5 +18,6 @@ func main() {
 	internUsecase := usecase.NewInternshipUsecase(internRepository, internValidate)
 	internController := controller.NewInternshipController(internUsecase)
 	e := router.NewRouter(internController)
+	e.Use(middleware.CORS())
 	e.Logger.Fatal(e.Start(":8080"))
 }
