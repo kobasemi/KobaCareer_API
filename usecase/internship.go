@@ -136,13 +136,6 @@ func (iu *internshipUsecase) UpdateInternship(internship domain.Internships, int
 	return resInternship, nil
 }
 
-//func (iu *internshipUsecase) DeleteInternship(internshipId uint) error {
-//	if err := iu.ir.DeleteInternship(internshipId); err != nil {
-//		return err
-//	}
-//	return nil
-//}
-
 func (iu *internshipUsecase) DeleteInternship(internshipId uint) error {
 	id, err := iu.ir.InternshipExist(internshipId)
 	if err != nil {
