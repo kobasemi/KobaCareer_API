@@ -57,8 +57,8 @@ func (iv *internshipValidator) InternshipValidate(internship domain.Internships)
 			validation.RuneLength(1, 1000).Error("limited max 1000 char"),
 		),
 		validation.Field(
-			&internship.FutureJob,
-			validation.Required.Error("future_job is required"),
+			&internship.Occupation,
+			validation.Required.Error("occupation is required"),
 			validation.RuneLength(1, 1000).Error("limited max 1000 char"),
 		),
 
@@ -77,6 +77,12 @@ func (iv *internshipValidator) InternshipValidate(internship domain.Internships)
 		validation.Field(
 			&internship.URL,
 			validation.Required.Error("url is required"),
+		),
+
+		validation.Field(
+			&internship.Duration,
+			validation.Required.Error("duration is required"),
+			validation.RuneLength(1, 30).Error("limited max 30 char"),
 		),
 	)
 }

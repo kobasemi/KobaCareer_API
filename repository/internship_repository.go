@@ -52,10 +52,11 @@ func (i internshipRepository) UpdateInternship(internship *domain.Internships, i
 		Deadline:    internship.Deadline,
 		Contributor: internship.Contributor,
 		Detail:      internship.Detail,
-		FutureJob:   internship.FutureJob,
+		Occupation:  internship.Occupation,
 		Flow:        internship.Flow,
 		Method:      internship.Method,
 		URL:         internship.URL,
+		Duration:    internship.Duration,
 	})
 	if result.Error != nil {
 		return result.Error
