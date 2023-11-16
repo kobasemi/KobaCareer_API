@@ -4,6 +4,7 @@ import (
 	"KobaCareer_API/domain"
 	"KobaCareer_API/repository"
 	"KobaCareer_API/validator"
+	"errors"
 )
 
 type IInternshipUsecase interface {
@@ -135,7 +136,22 @@ func (iu *internshipUsecase) UpdateInternship(internship domain.Internships, int
 	return resInternship, nil
 }
 
+//func (iu *internshipUsecase) DeleteInternship(internshipId uint) error {
+//	if err := iu.ir.DeleteInternship(internshipId); err != nil {
+//		return err
+//	}
+//	return nil
+//}
+
 func (iu *internshipUsecase) DeleteInternship(internshipId uint) error {
+	id, err := iu.ir.InternshipExist(internshipId)
+	if err != nil {
+		return err
+	}
+	if !id {
+		return errors.New("id is not exist")
+	}
+
 	if err := iu.ir.DeleteInternship(internshipId); err != nil {
 		return err
 	}

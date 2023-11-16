@@ -11,6 +11,7 @@ type IInternshipRepository interface {
 	CreateInternship(internship *domain.Internships) error
 	UpdateInternship(internship *domain.Internships, internshipId uint) error
 	DeleteInternship(internshipId uint) error
+	InternshipExist(internshipId uint) (bool, error)
 }
 
 type internshipRepository struct {
@@ -70,4 +71,12 @@ func (i internshipRepository) DeleteInternship(internshipId uint) error {
 		return result.Error
 	}
 	return nil
+}
+
+func (i internshipRepository) InternshipExist(internshipId uint) (bool, error) {
+	var count int64
+	if err := i.db.Model(&domain.Internships{}).Where(&domain.Internships{ID: internshipId}).Count(&count).Error; err != nil {
+		return false, err
+	}
+	return count > 0, nil
 }
