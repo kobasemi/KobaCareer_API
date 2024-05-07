@@ -8,7 +8,7 @@ type Internships struct {
 	ID          uint      `json:"id" gorm:"primary_key;auto_increment"`
 	Company     string    `json:"company"`
 	Title       string    `json:"title"`
-	Salary      uint      `json:"salary"`
+	Salary      string    `json:"salary"`
 	Period      string    `json:"period"`
 	Selection   string    `json:"select"`
 	Deadline    string    `json:"deadline"`
@@ -27,7 +27,7 @@ type InternshipsResponse struct {
 	ID          uint      `json:"id" gorm:"primary_key;auto_increment"`
 	Company     string    `json:"company"`
 	Title       string    `json:"title"`
-	Salary      uint      `json:"salary"`
+	Salary      string    `json:"salary"`
 	Period      string    `json:"period"`
 	Selection   string    `json:"select"`
 	Deadline    string    `json:"deadline"`
